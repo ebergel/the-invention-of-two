@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Is Life Wiki · The Role of Sexual Reproduction</title>
+    <link rel="stylesheet" href="./guide.css" />
+  </head>
+  <body>
+    <div class="wiki-shell">
+      <!-- Top Wiki Header -->
+      <header class="wiki-header">
+        <div class="wh-left">
+          <button id="btn-menu" class="wbtn menu-toggle" aria-label="Toggle navigation">☰</button>
+          <a href="#page=big-mystery" class="wiki-brand" id="brand-home">
+            <span class="wiki-badge">WIKI</span>
+            <div>
+              <div class="wiki-kicker">WHAT IS LIFE LABORATORY</div>
+              <div class="wiki-title">The Role of Sexual Reproduction</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Live Search across Articles & Glossary -->
+        <div class="search-wrap">
+          <input
+            type="search"
+            id="wiki-search"
+            class="wiki-search"
+            placeholder="Search any concept (e.g. Gini, anisogamy, peacock, pixels, Platt)..."
+            autocomplete="off"
+          />
+          <div id="search-results" class="search-results hidden"></div>
+        </div>
+
+        <div class="wh-right">
+          <button id="btn-glossary" class="wbtn">📚 A–Z Glossary</button>
+          <a href="./index.html" class="wbtn wbtn-primary">Open Live Lab →</a>
+        </div>
+      </header>
+
+      <!-- 3-Column Wiki Layout -->
+      <div class="wiki-body">
+        <!-- Left Navigation Sidebar -->
+        <aside id="wiki-sidebar" class="wiki-sidebar">
+          <div class="progress-card">
+            <div class="prog-top">
+              <span>Explorer Progress</span>
+              <strong id="prog-text">1 / 12</strong>
+            </div>
+            <div class="prog-track">
+              <div id="prog-fill" class="prog-fill" style="width: 8%"></div>
+            </div>
+          </div>
+          <nav id="sidebar-nav" class="sidebar-nav" aria-label="Wiki Articles"></nav>
+        </aside>
+
+        <!-- Center Article Reader -->
+        <main id="wiki-main" class="wiki-main">
+          <article class="wiki-article">
+            <div class="article-topbar">
+              <button id="btn-back" class="wbtn wbtn-xs" disabled>← Back</button>
+              <span id="art-kicker" class="art-kicker"></span>
+              <span id="art-readtime" class="art-readtime"></span>
+            </div>
+
+            <h1 id="art-title" class="art-title"></h1>
+            <p id="art-summary" class="art-summary"></p>
+
+            <div id="art-body" class="art-body"></div>
+
+            <!-- Live Lab Call-to-Action Card -->
+            <div id="art-lab-cta" class="lab-cta-card"></div>
+
+            <!-- Previous / Next Reading Path -->
+            <nav class="article-pager">
+              <button id="btn-prev-art" class="pager-btn"></button>
+              <button id="btn-next-art" class="pager-btn pager-right"></button>
+            </nav>
+          </article>
+        </main>
+
+        <!-- Right Context Rail: Page Terms & Related Pages -->
+        <aside class="wiki-rail">
+          <div class="rail-section">
+            <div class="rail-head">KEY CONCEPTS ON THIS PAGE</div>
+            <div id="rail-terms" class="rail-terms"></div>
+          </div>
+
+          <div class="rail-section">
+            <div class="rail-head">KEEP EXPLORING</div>
+            <div id="rail-related" class="rail-related"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Floating Hover Quick-Peek Tooltip for Wiki Links -->
+    <div id="wiki-popover" class="wiki-popover hidden" role="tooltip">
+      <div class="pop-term" id="pop-term"></div>
+      <p class="pop-short" id="pop-short"></p>
+      <div class="pop-analogy" id="pop-analogy"></div>
+      <div class="pop-hint">Click to open full article →</div>
+    </div>
+
+    <!-- A-Z Glossary Modal -->
+    <div id="glossary-modal" class="modal-backdrop hidden" role="dialog" aria-label="A-Z Concept Glossary">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <h3>📚 A–Z Lab Concept Glossary</h3>
+            <p class="modal-sub">Every technical term translated into plain English + real-world analogies</p>
+          </div>
+          <button id="btn-glossary-close" class="wbtn">Close</button>
+        </div>
+        <input
+          type="search"
+          id="glossary-filter"
+          class="wiki-search"
+          placeholder="Filter glossary terms..."
+          style="width:100%;margin-bottom:12px"
+        />
+        <div id="glossary-list" class="glossary-list"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./guide.js"></script>
+  </body>
+</html>
