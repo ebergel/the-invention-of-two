@@ -1,0 +1,31 @@
+{
+  "name": "the-invention-of-two",
+  "version": "0.2.0",
+  "description": "First-principles evolutionary emergence observatory (zero hard-coded sexes, Red Queen parasites, Parker-Baker-Smith anisogamy, negative controls, and synced Multimedia Wiki).",
+  "type": "module",
+  "license": "MIT",
+  "author": "Eduardo Bergel, PhD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ebergel/the-invention-of-two.git"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/genesis.test.mjs && node --test tests/simulation.test.mjs",
+    "test:genesis": "node --test tests/genesis.test.mjs",
+    "test:take01": "node --test tests/simulation.test.mjs",
+    "check": "node --check server.mjs && node --check guide.js && node --check src/genesis/config.js && node --check src/genesis/engine.js && node --check src/genesis/renderer.js && node --check src/genesis/charts.js && node --check src/genesis/main.js && node --check src/wikiData.js && node --check src/wikiWidgets.js && node --check src/tebAtlasData.js"
+  },
+  "keywords": [
+    "evolution",
+    "artificial-life",
+    "emergence",
+    "anisogamy",
+    "red-queen",
+    "simulation",
+    "agent-based-modeling"
+  ]
+}

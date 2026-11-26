@@ -1,0 +1,15 @@
+# OS & Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / runtime logs
+node_modules/
+npm-debug.log*
+*.log
+.env
+.env.*
+coverage/
