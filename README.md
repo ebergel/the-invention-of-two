@@ -6,7 +6,15 @@
 
 ---
 
-## Quick Start (Zero Dependencies)
+## Live Online Observatory (GitHub Pages)
+
+- **Primary Genesis Observatory (*The Invention of Two*):** https://ebergel.github.io/the-invention-of-two/
+- **Synced Multimedia Wiki, Project Charter & TEB Atlas:** https://ebergel.github.io/the-invention-of-two/guide.html
+- **Take-01 Archive (*Mating Systems & Decoy Traps*):** https://ebergel.github.io/the-invention-of-two/take01.html
+
+---
+
+## Local Quick Start (Zero Dependencies)
 
 Requires **Node.js ≥ 20** (no `npm install` needed).
 
