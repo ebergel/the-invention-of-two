@@ -7,7 +7,9 @@ import { GenesisEngine } from './engine.js';
 import { GenesisRenderer, gameteSizeColor } from './renderer.js';
 import { drawWaterfall, drawRedQueenRadar, drawRegimeCurves } from './charts.js';
 
-const sim = new GenesisEngine('invention_of_two');
+const urlExp = new URLSearchParams(window.location.search).get('exp');
+const initialExpId = GENESIS_EXPERIMENTS.some((e) => e.id === urlExp) ? urlExp : 'invention_of_two';
+const sim = new GenesisEngine(initialExpId);
 const oceanCanvas = document.getElementById('ocean-canvas');
 const renderer = new GenesisRenderer(oceanCanvas);
 

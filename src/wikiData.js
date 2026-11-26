@@ -252,11 +252,39 @@ export const GLOSSARY = {
     analogy: 'When the harem boss disappears, the biggest female’s cortisol spikes, blocks aromatase, and she becomes the new Alpha male!',
     page: 'teb-sex-ratios',
   },
+  occam_razor: {
+    term: "Evolutionary Occam's Razor",
+    short: 'Finding the minimum primordial set of physical and genetic conditions where a Target Emergent Behaviour (TEB) arises spontaneously without hard-coding the target concept.',
+    analogy: 'Keep removing beams from a bridge one by one: anything you can remove without collapse was decoration; the beams whose removal collapses it are the true invariants.',
+    page: 'charter',
+  },
+  red_queen: {
+    term: 'Red Queen Hypothesis (Negative Frequency-Dependent Selection)',
+    short: 'Co-evolving host-specific parasites target whichever immune genotype becomes common, punishing clonal monocultures and favoring sexual recombination.',
+    analogy: 'Like the Red Queen in Alice in Wonderland, you have to keep running (shuffling your 8-bit immune lock every generation) just to stay in the same place.',
+    page: 'genesis-lab',
+  },
+  negative_control: {
+    term: 'Negative Control (Falsification Test)',
+    short: 'An experiment where the key selective condition is turned OFF to verify that the emergent behaviour genuinely disappears — proving it was not hard-coded.',
+    analogy: 'If a "gravity simulator" still makes apples fall when you set gravity = 0, the fall was rigged. Real emergence must fail when its cause is removed.',
+    page: 'genesis-lab',
+  },
+  hysteresis_lockin: {
+    term: 'Origin vs. Equilibrium vs. Hysteresis (Lock-In)',
+    short: 'Distinguishing what triggers a trait to invade from rarity (Origin), what holds it steady (Equilibrium), and whether removing the original trigger causes collapse or stays locked in (Hysteresis).',
+    analogy: 'A match starts a campfire (Origin), dry logs keep it burning (Equilibrium), and blowing out the match does not put out the fire (Hysteresis).',
+    page: 'charter',
+  },
 };
 
 export const WIKI_SECTIONS = [
   {
-    group: 'Start Here',
+    group: 'Charter & Genesis Lab (Main)',
+    pages: ['charter', 'genesis-lab'],
+  },
+  {
+    group: 'Start Here (Take-01 Concepts)',
     pages: ['big-mystery', 'field-guide'],
   },
   {
@@ -264,7 +292,7 @@ export const WIKI_SECTIONS = [
     pages: ['platt-monkeys', 'anisogamy', 'gini-bateman', 'handicap-runaway', 'supernormal-trap'],
   },
   {
-    group: 'Inside the Simulator',
+    group: 'Take-01 Simulator (Archive)',
     pages: ['male-brain', 'genome', 'telemetry-guide', 'experiments', 'sandbox-tools'],
   },
   {
@@ -275,6 +303,124 @@ export const WIKI_SECTIONS = [
 
 /** Helper tag syntax inside article HTML: [[term_key|Display Text]] -> auto-converted into interactive wiki link */
 export const WIKI_PAGES = {
+  charter: {
+    id: 'charter',
+    title: "Project Charter: Evolutionary Occam's Razor",
+    kicker: 'SYNCED MASTER CHARTER · OBJECTIVES & ASSUMPTIONS',
+    readTime: '3 min read',
+    summary: 'The shared contract keeping the Live Observatory, Multimedia Wiki, and upcoming scientific rigor methods strictly synchronized — zero hard-coded answers, explicit invariants, and mandatory negative controls.',
+    body: `
+      <div class="teacher-note">
+        <span class="tn-avatar">🧭</span>
+        <div>
+          <strong>Single Source of Truth:</strong> This page mirrors <code>PROJECT_CHARTER.md</code> at the repository root. Before opening new fronts or formal parameter sweeps, every active equation, assumption, and test lives cleanly here.
+        </div>
+      </div>
+
+      <h2>1. Core Objective: True Emergence</h2>
+      <p>
+        Most simulations either <strong>hard-code the answer</strong> (assuming males, females, or altruism from line one) or pile 50 realistic rules together until something happens — leaving you unable to tell which rules mattered.
+      </p>
+      <p>
+        Our laboratory follows <strong>[[occam_razor|Evolutionary Occam's Razor]]</strong>: find the <em>minimum, primordial set of conditions</em> under which a Target Emergent Behaviour (TEB) arises spontaneously from lower-level physics, and isolate the invariants required to maintain it in equilibrium.
+      </p>
+
+      <h2>2. The 4-Step Research Protocol</h2>
+      <ol class="wiki-list">
+        <li><strong>Zero-Label Formulation (Ban the Noun):</strong> Delete the target concept from the codebase (no <code>sex</code>, no <code>'M'</code> or <code>'F'</code>). Encode only energy budgets, geometry, inheritance, and continuous or bitwise traits.</li>
+        <li><strong>The Razor (Systematic Ablation):</strong> Knock out one mechanism at a time. Anything you can remove without killing emergence was decoration; anything whose removal breaks emergence is a <strong>necessary condition</strong>.</li>
+        <li><strong>Variant Sweeps (True Invariants):</strong> Test superficially different ecologies or inheritance rules to separate deep mathematical invariants from implementation artifacts.</li>
+        <li><strong>[[hysteresis_lockin|Origin vs. Equilibrium vs. Hysteresis]]:</strong> Explicitly separate (a) what lets a trait invade from 0%, (b) what holds it in dynamic equilibrium, and (c) whether removing the origin trigger collapses it or reveals a one-way evolutionary ratchet.</li>
+      </ol>
+
+      <h2>3. Project Lineage &amp; Attribution</h2>
+      <div class="duo-cards">
+        <div class="mini-card cyan">
+          <h4>Main Lab (<code>/</code>) · <em>Gnothi Seauton</em>: The Invention of Two</h4>
+          <p><strong>True Emergence (Zero Hard-Coded Sexes).</strong> Prompted by an open <em>"Know thyself"</em> challenge; Antigravity chose to abolish <code>'M'</code>/<code>'F'</code> from the engine, add co-evolving 8-bit parasites, and embed built-in [[negative_control|Negative Controls]]. Promoted to <code>main</code> as our flagship observatory.</p>
+        </div>
+        <div class="mini-card magenta">
+          <h4>Take-01 Archive (<code>/take01.html</code> · tag <code>v0.1-take01-mating-lab</code>)</h4>
+          <p><strong>Pre-Labeled Mating Systems &amp; Traps.</strong> Preserved intact because history matters: assumes ♂/♀ sexes to study [[bateman|Bateman's Principle]], [[platt-monkeys|Platt (2005) social valuation]], [[runaway|Fisherian runaway]], and [[supernormal|supernormal decoy traps]].</p>
+        </div>
+      </div>
+
+      <div class="epistemic-box">
+        <div class="ep-head">🔍 EPISTEMIC DISCIPLINE · READINESS GATE FOR SCIENTIFIC RIGOR</div>
+        <p>
+          Every claimed emergence on <code>main</code> must pass automated tests in <code>tests/genesis.test.mjs</code> covering both <strong>positive emergence</strong> AND <strong>explicit negative controls</strong>, and must list its remaining idealizations openly. Once this baseline is locked in, the next phase connects formal scientific rigor (ablation switches, multi-seed sweeps, and phase-boundary mapping).
+        </p>
+      </div>
+    `,
+    nextId: 'genesis-lab',
+    labLink: { target: './index.html', exp: 'full_genesis', label: 'Launch Primary Genesis Observatory →' },
+    related: ['genesis-lab', 'teb-atlas', 'big-mystery'],
+  },
+
+  'genesis-lab': {
+    id: 'genesis-lab',
+    title: 'Genesis Lab: The Invention of Two (Gnothi Seauton)',
+    kicker: 'MAIN OBSERVATORY · ZERO HARD-CODED SEXES',
+    readTime: '4 min read',
+    summary: 'Exact equations, 4 falsifiable experiments, identified invariants, and honest model idealizations powering the Primary Lab at /.',
+    body: `
+      <div class="teacher-note">
+        <span class="tn-avatar">✦</span>
+        <div>
+          <strong>Why We Abolished "Male" and "Female":</strong> If you ask a simulator why two sexes exist while hard-coding <code>sex: 'M' | 'F'</code> on line one, you smuggled the conclusion into the premise. In <code>src/genesis/</code>, both words do not exist — every cell starts symmetric at <code>gameteSize = 0.50</code>.
+        </div>
+      </div>
+
+      <h2>1. Continuous Genome (Zero Sex Labels)</h2>
+      <p>
+        Every organism in <code>src/genesis/engine.js</code> carries five continuous/bitwise traits — even the bioluminescent renderer maps continuous numbers directly to color, shape, flagella, and yolk granules:
+      </p>
+      <ul class="wiki-list">
+        <li><code>recombine</code> [0.01–0.99]: Obligate clonal mitosis (&lt; 0.50) vs. obligate sexual gamete fusion (≥ 0.50).</li>
+        <li><code>gameteSize</code> [0.06–0.94]: Starts unimodal at <strong>0.50</strong>. Fixed parental energy budget yields <code>count(s) = clamp(1.05 / (0.02 + s), 1, 20)</code>.</li>
+        <li><code>postCare</code> [0.01–0.98]: Tendency to linger near and provision own recent zygotes.</li>
+        <li><code>speed</code> [0.25–0.95]: Swimming velocity vs. quadratic metabolic energy burn.</li>
+        <li><code>immuneLock</code> [0–255]: 8-bit molecular lock defending against co-evolving 8-bit parasites.</li>
+      </ul>
+
+      <h2>2. The 4 Load-Bearing Rules (Active Invariants)</h2>
+      <ol class="wiki-list">
+        <li><strong>True Two-Fold Cost (Energy Conservation):</strong> Clonal mitosis turns one parent's budget into one daughter (<code>energy = 42</code>). Sexual fusion requires two distinct parents' gametes to form one zygote (<code>energy ≤ 40</code>).</li>
+        <li><strong>[[red_queen|Red Queen 8-Bit Parasites]]:</strong> Parasites carry an 8-bit key, crack hosts matching ≥ 7/8 bits, and replicate winning keys — punishing common clonal monocultures via negative frequency-dependent selection.</li>
+        <li><strong>Parker–Baker–Smith Yolk Biophysics:</strong> Usable cytoplasmic yolk scales superlinearly (<code>Y = s₁² + s₂²</code>), zygote survival follows <code>S(Y) = Y⁵ / (Y⁵ + K⁵)</code>, geometric collision radius scales purely as <code>1.6 + (s₁ + s₂) × 14.5</code>, and chemotactic plumes scale with cell volume (<code>s³</code>).</li>
+        <li><strong>Segregating Gamete-Size Locus (Hidden Genetic Invariant!):</strong> <code>gameteSize</code> segregates intact from Parent A <em>or</em> Parent B rather than blending <code>(A + B) / 2</code>. Applying [[occam_razor|Occam's Razor]] reveals why: blending inheritance erases anisogamy every generation by turning micro + macro into 0.50 hybrids.</li>
+      </ol>
+
+      <h2>3. The 4 Observatory Experiments (2 Emergence + 2 [[negative_control|Negative Controls]])</h2>
+      <div class="duo-cards">
+        <div class="mini-card cyan">
+          <h4>Emergence Tests (TEB 1 &amp; TEB 2)</h4>
+          <p><strong>Exp 1 — Full Genesis (0 → Sex → Two):</strong> Starts ~70% clonal &amp; symmetric 0.50 with parasites ON. Red Queen drives sex from ~28% → 80%+ and doubles immune locks, then yolk physics splits gametes into twin Cyan &amp; Amber peaks.</p>
+          <p><strong>Exp 2 — The Invention of Two (Y-Fork):</strong> Starts 100% sexual at 0.50 (<code>K = 0.49</code>). Watch the live Waterfall Spectrogram Y-fork into ~45% Micro-makers and ~45% Macro-egg vessels, hollowing out the 0.50 middle.</p>
+        </div>
+        <div class="mini-card magenta">
+          <h4>Falsification Controls (Must Fail!)</h4>
+          <p><strong>Exp 3 — Negative Control: Clones Win:</strong> Turn parasites OFF at a 50/50 start. The two-fold cost crushes sexual lineages down to ~5–14%, proving sex was not smuggled in.</p>
+          <p><strong>Exp 4 — Negative Control: No Split:</strong> Make the ocean benign (<code>K = 0.015</code>) so tiny+tiny zygotes thrive. Disruptive pressure vanishes and the ocean stays ~97% uniform small isogamy — zero split!</p>
+        </div>
+      </div>
+
+      <div class="epistemic-box">
+        <div class="ep-head">🔍 EXPLICIT ASSUMPTIONS &amp; KNOWN IDEALIZATIONS</div>
+        <ul class="wiki-list">
+          <li><strong>Segregating locus assumed:</strong> Models a haploid mating-type/sex-determining locus rather than evolving linkage lock-in from scratch.</li>
+          <li><strong>High parasite virulence (<code>92</code>) &amp; specificity (<code>≥7/8</code>):</strong> Overcomes the two-fold cost via Red Queen alone. In real history, DNA repair and Hill–Robertson interference act alongside parasites.</li>
+          <li><strong>2D broadcast spawning &amp; 8-bit immunity:</strong> Minimal stand-ins for 3D marine plumes and multi-locus vertebrate MHC immunity.</li>
+          <li><strong>Subtle Care Divergence (TEB 3):</strong> Without internal fertilization, gestation, or paternity asymmetry, broadcast spawners show only weak care divergence — confirming Kokko &amp; Jennions (2008) that gamete size alone does not mechanically dictate parental care.</li>
+        </ul>
+      </div>
+    `,
+    prevId: 'charter',
+    nextId: 'big-mystery',
+    labLink: { target: './index.html', exp: 'invention_of_two', label: 'Watch the Live Y-Fork Spectrogram →' },
+    related: ['charter', 'teb-atlas', 'anisogamy', 'big-mystery'],
+  },
+
   'big-mystery': {
     id: 'big-mystery',
     title: 'The Big Mystery: Why Does Sex Even Exist?',
@@ -344,7 +490,7 @@ export const WIKI_PAGES = {
           Real evolutionary biologists still debate <em>which</em> pressure (parasites, purging mutations, or changing environments) mattered most in originally evolving sex — current evidence points to multiple interacting forces rather than one neat slogan.
         </p>
         <p>
-          <strong>Important [[step0|Step 0]] boundary:</strong> our simulator does <em>not</em> include parasites or deleterious mutation load. If you dropped asexual clones and sexual organisms into our arena side by side, asexuals would actually wipe sexuals out! Our lab starts at <strong>Step 0: sexual reproduction already exists</strong> and explores what happens <em>next</em> once sexes compete.
+          <strong>Important [[step0|Step 0]] boundary (Take-01 Archive vs. Primary Genesis Lab):</strong> the archived Take-01 simulator (<code>/take01.html</code>) starts at <em>Step 0: sexual reproduction already exists</em> to study mating markets and decoy traps. To watch <strong>sex itself and two distinct sexes emerge from clones &amp; 0.50 isogamy</strong> under co-evolving 8-bit parasites — with built-in negative controls — jump into the [[genesis-lab|Primary Genesis Lab (The Invention of Two)]]!
         </p>
       </div>
 
@@ -359,9 +505,10 @@ export const WIKI_PAGES = {
         <div class="quiz-feedback"></div>
       </div>
     `,
+    prevId: 'genesis-lab',
     nextId: 'field-guide',
-    labLink: { exp: 'sexual_emergence', label: 'Watch Sexual Selection Live (Exp 1)' },
-    related: ['platt-monkeys', 'anisogamy', 'field-guide'],
+    labLink: { target: './take01.html', exp: 'sexual_emergence', label: 'Open Take-01 Archive: Sexual Selection (Exp 1)' },
+    related: ['genesis-lab', 'platt-monkeys', 'anisogamy', 'field-guide'],
   },
 
   'field-guide': {

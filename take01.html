@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Take-01 Archive · What Is Life Lab (Pre-Labeled Mating Systems)</title>
+    <link rel="stylesheet" href="./take01.css" />
+  </head>
+  <body>
+    <div class="lab-shell">
+      <!-- Top Observatory Header -->
+      <header class="lab-header">
+        <div class="brand">
+          <div class="brand-badge">T01</div>
+          <div class="brand-text">
+            <div class="brand-kicker">ARCHIVE · TAKE 01 (PRE-LABELED ♂/♀ SEXES)</div>
+            <h1>Mating Systems &amp; Decoy Traps</h1>
+          </div>
+        </div>
+
+        <div class="header-metrics">
+          <div class="stat-pill">
+            <span class="stat-label">GEN</span>
+            <span id="stat-gen" class="stat-value">1</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">TICK</span>
+            <span id="stat-tick" class="stat-value">0</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">POP</span>
+            <span id="stat-pop" class="stat-value">96</span>
+          </div>
+          <div class="stat-pill accent-cyan">
+            <span class="stat-label">♂ / ♀</span>
+            <span id="stat-sex-ratio" class="stat-value">48 / 48</span>
+          </div>
+          <div class="stat-pill accent-magenta" id="pill-trapped">
+            <span class="stat-label">DECOY TRAP</span>
+            <span id="stat-trapped" class="stat-value">0%</span>
+          </div>
+        </div>
+
+        <div class="transport">
+          <button id="btn-play" class="btn btn-primary" title="Play / Pause (Space)">Pause</button>
+          <button id="btn-step" class="btn" title="Step 1 tick">Step</button>
+          <div class="speed-group" role="group" aria-label="Simulation speed">
+            <button class="speed-btn active" data-speed="1">1×</button>
+            <button class="speed-btn" data-speed="2">2×</button>
+            <button class="speed-btn" data-speed="5">5×</button>
+            <button class="speed-btn" data-speed="10">10×</button>
+          </div>
+          <button id="btn-reset" class="btn" title="Reset experiment">Reset</button>
+          <a href="./index.html" class="btn btn-primary" title="Return to Primary Genesis Observatory (Zero Hard-Coded Sexes)">← Genesis Lab</a>
+          <a href="./guide.html" class="btn btn-guide" title="Open interactive multimedia Lab Wiki &amp; Glossary">📖 Lab Wiki</a>
+        </div>
+      </header>
+
+      <!-- Experiment Presets Ribbon -->
+      <nav class="experiment-bar" aria-label="Guided Experiments">
+        <span class="exp-bar-label">EXPERIMENTS</span>
+        <div id="experiment-pills" class="experiment-pills"></div>
+      </nav>
+
+      <!-- Main Lab Grid -->
+      <main class="lab-main">
+        <!-- Left / Center Habitat Stage -->
+        <section class="stage-column">
+          <div class="hypothesis-strip">
+            <div class="hypothesis-left">
+              <span id="exp-title" class="exp-title">Anisogamy &amp; Male Competition</span>
+              <span id="exp-hypothesis" class="exp-hypothesis"></span>
+            </div>
+            <button id="btn-quick-decoy" class="btn btn-magenta-soft" title="Inject a Supernormal Pixel Decoy into the arena">
+              + Inject Decoy Trap
+            </button>
+          </div>
+
+          <div class="canvas-frame">
+            <canvas id="sim-canvas"></canvas>
+
+            <!-- Floating Live Milestone Observation Toast -->
+            <div id="milestone-banner" class="milestone-banner">
+              <span class="milestone-dot"></span>
+              <strong id="milestone-title">Lab Initialized</strong>
+              <span id="milestone-text">Observing emergent sexual selection...</span>
+            </div>
+
+            <!-- Floating Bottom Toolbar -->
+            <div class="stage-toolbar">
+              <div class="tool-group">
+                <button class="tool-btn active" data-tool="inspect" title="Click any organism to inspect its live utility brain">
+                  Inspect
+                </button>
+                <button class="tool-btn" data-tool="decoy" title="Click canvas to place or remove a Supernormal Pixel Decoy">
+                  Decoy Beacon
+                </button>
+                <button class="tool-btn" data-tool="food" title="Click canvas to drop a burst of Food (Berries / Cherry Juice)">
+                  🍓 Drop Food
+                </button>
+              </div>
+
+              <div class="divider-v"></div>
+
+              <div class="overlay-group">
+                <label class="toggle-chip">
+                  <input type="checkbox" id="opt-tethers" checked />
+                  <span>Tethers</span>
+                </label>
+                <label class="toggle-chip">
+                  <input type="checkbox" id="opt-halos" checked />
+                  <span>Status Halos</span>
+                </label>
+                <select id="opt-colormode" class="mini-select" title="Color organisms by">
+                  <option value="sex">Color: Sex / Trap</option>
+                  <option value="w_mate">Gene: Mating Drive</option>
+                  <option value="w_status">Gene: Rival Tracking</option>
+                  <option value="display">Gene: Costly Display</option>
+                  <option value="discernment">Gene: Discernment</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Compact Visual Legend -->
+            <div class="stage-legend">
+              <span><b class="leg-badge leg-male">♂</b>Male (Plume = Display)</span>
+              <span><b class="leg-badge leg-alpha">♛</b>Alpha</span>
+              <span><b class="leg-badge leg-female">♀</b>Female (Ring = Fertile)</span>
+              <span><b class="leg-badge leg-food">🍓</b>Food / Juice</span>
+              <span><b class="leg-badge leg-decoy">📺</b>Decoy Screen</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Telemetry & Workbench Column -->
+        <aside class="workbench-column">
+          <div class="tabs-header" role="tablist">
+            <button class="tab-btn active" data-tab="telemetry">Live Telemetry</button>
+            <button class="tab-btn" data-tab="controls">Lab Controls</button>
+            <button class="tab-btn" data-tab="inspector">Inspector &amp; Notes</button>
+          </div>
+
+          <!-- TAB 1: TELEMETRY -->
+          <div id="tab-telemetry" class="tab-panel active">
+            <!-- Card 1: Evolutionary Trait Trajectories -->
+            <div class="card">
+              <div class="card-head">
+                <h2>Evolutionary Trait Trajectories</h2>
+                <span id="drift-badge" class="drift-badge" title="Effective breeding population size (Ne). Small Ne means strong random genetic drift — run the same preset twice to see sampling luck vs. selection!">N_e ≈ 48 · High Drift</span>
+              </div>
+              <canvas id="chart-traits" class="chart-canvas chart-tall"></canvas>
+              <div id="trait-legend" class="trait-legend"></div>
+            </div>
+
+            <!-- Card 2: Bateman's Principle -->
+            <div class="card">
+              <div class="card-head">
+                <h2>Bateman's Principle: Offspring Skew</h2>
+                <span id="bateman-sample" class="card-sub">Cohort n=0</span>
+              </div>
+              <div class="gini-row">
+                <div class="gini-box male">
+                  <span class="gini-lbl">♂ Male Gini</span>
+                  <strong id="val-male-gini">0.00</strong>
+                  <small id="val-male-zero">0% childless</small>
+                </div>
+                <div class="gini-box female">
+                  <span class="gini-lbl">♀ Female Gini</span>
+                  <strong id="val-female-gini">0.00</strong>
+                  <small id="val-female-zero">0% childless</small>
+                </div>
+                <div class="gini-box delta" title="Male Gini minus Female Gini: isolates sexual-selection skew above baseline foraging/ecological noise">
+                  <span class="gini-lbl">ΔGini (♂−♀)</span>
+                  <strong id="val-delta-gini">+0.00</strong>
+                  <small>sex skew gap</small>
+                </div>
+                <div class="gini-box share">
+                  <span class="gini-lbl">Top 20% ♂</span>
+                  <strong id="val-top-share">0%</strong>
+                  <small>of offspring</small>
+                </div>
+              </div>
+              <canvas id="chart-bateman" class="chart-canvas chart-med"></canvas>
+              <div class="chart-caption">
+                Raw Gini includes foraging luck; <strong>ΔGini</strong> isolates sex skew · <span class="c-male">Cyan ♂</span> · <span class="c-female">Amber ♀</span>
+              </div>
+            </div>
+
+            <!-- Card 3: Platt Pay-Per-View Assay -->
+            <div class="card">
+              <div class="card-head">
+                <h2>Platt (2005) "Pay-Per-View" Assay</h2>
+                <span class="card-sub">Model Proxy</span>
+              </div>
+              <canvas id="chart-platt" class="chart-canvas chart-short"></canvas>
+              <div class="platt-footer">
+                <span>Decoy Hijack Vulnerability</span>
+                <div class="vuln-track">
+                  <div id="bar-decoy-vuln" class="vuln-fill" style="width: 0%"></div>
+                </div>
+                <strong id="val-decoy-vuln">0%</strong>
+              </div>
+              <div class="chart-caption" style="text-align:left">
+                Estimated from live <code>w_mate</code> &amp; <code>w_status</code> genes; Subord. (Ref) reflects Duke's <code>n=3</code> macaque baseline (−).
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: LAB CONTROLS -->
+          <div id="tab-controls" class="tab-panel">
+            <div class="card">
+              <div class="card-head">
+                <h2>Reproductive Regime</h2>
+                <span class="card-sub">Live Switch</span>
+              </div>
+              <div class="segmented">
+                <button id="regime-sexual" class="seg-btn active" data-regime="sexual">Sexual (Anisogamy)</button>
+                <button id="regime-asexual" class="seg-btn" data-regime="asexual">Asexual (Clonal)</button>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h2>Sexual Selection &amp; Ecology</h2>
+                <span class="card-sub">Real-time parameters</span>
+              </div>
+              <div class="controls-list">
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Anisogamy Asymmetry (♀/♂ Cost)</span>
+                    <strong id="lbl-anisogamy">4.5×</strong>
+                  </div>
+                  <input type="range" id="ctrl-anisogamy" min="1" max="8" step="0.5" value="4.5" />
+                </label>
+
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Female Selectivity Bias</span>
+                    <strong id="lbl-choosiness">0.62</strong>
+                  </div>
+                  <input type="range" id="ctrl-choosiness" min="0" max="1" step="0.05" value="0.62" />
+                </label>
+
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Male Contest Energy Cost</span>
+                    <strong id="lbl-contest">15</strong>
+                  </div>
+                  <input type="range" id="ctrl-contest" min="0" max="40" step="2" value="15" />
+                </label>
+
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Cherry Juice Abundance</span>
+                    <strong id="lbl-food">130</strong>
+                  </div>
+                  <input type="range" id="ctrl-food" min="55" max="230" step="5" value="130" />
+                </label>
+
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Mutation Rate</span>
+                    <strong id="lbl-mutation">24%</strong>
+                  </div>
+                  <input type="range" id="ctrl-mutation" min="0.02" max="0.5" step="0.02" value="0.24" />
+                </label>
+              </div>
+            </div>
+
+            <div class="card card-decoy">
+              <div class="card-head">
+                <h2>Supernormal Stimuli ("Pixels Trap")</h2>
+                <span class="card-sub">Zero-fitness decoys</span>
+              </div>
+              <div class="controls-list">
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Active Decoy Beacons</span>
+                    <strong id="lbl-decoys">0</strong>
+                  </div>
+                  <input type="range" id="ctrl-decoys" min="0" max="10" step="1" value="0" />
+                </label>
+
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Decoy Salience Multiplier</span>
+                    <strong id="lbl-salience">2.55×</strong>
+                  </div>
+                  <input type="range" id="ctrl-salience" min="1.0" max="4.0" step="0.1" value="2.55" />
+                </label>
+
+                <label class="slider-row">
+                  <div class="slider-meta">
+                    <span>Cherry Juice Drain Rate</span>
+                    <strong id="lbl-drain">0.34</strong>
+                  </div>
+                  <input type="range" id="ctrl-drain" min="0.05" max="0.8" step="0.05" value="0.34" />
+                </label>
+
+                <div class="learning-box">
+                  <label class="ctrl-check">
+                    <input type="checkbox" id="ctrl-learning" />
+                    <span><strong>Individual Learning (Habituation)</strong> — males learn screens give 0 payoff within 1 lifetime</span>
+                  </label>
+                  <label class="ctrl-check" id="wrap-novelty">
+                    <input type="checkbox" id="ctrl-novelty" disabled />
+                    <span><strong>Variable-Ratio Novelty</strong> — periodic screen refresh partially defeats habituation</span>
+                  </label>
+                  <div class="hab-meta">
+                    <span>Mean Male Habituation:</span>
+                    <strong id="lbl-habituation">0%</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="btn-row">
+                <button id="btn-add-3-decoys" class="btn btn-magenta-soft">+ Add 3 Decoys</button>
+                <button id="btn-clear-decoys" class="btn">Clear Decoys</button>
+                <button id="btn-bottleneck" class="btn">Bottleneck Shock</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: INSPECTOR & SCIENTIFIC NOTES -->
+          <div id="tab-inspector" class="tab-panel">
+            <div class="card">
+              <div class="card-head">
+                <h2>Organism Brain Inspector</h2>
+                <span id="insp-id" class="card-sub">Click any organism</span>
+              </div>
+              <div id="inspector-body" class="inspector-empty">
+                Select any organism in the habitat to inspect its live Platt common-currency utility brain (Food vs. Female vs. Alpha Rival vs. Decoy) and heritable genome.
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-head">
+                <h2>Emergent Lab Log</h2>
+                <span class="card-sub">Auto-detected shifts</span>
+              </div>
+              <ul id="milestone-log" class="milestone-log"></ul>
+            </div>
+
+            <div class="card notes-card">
+              <div class="card-head">
+                <h2>Chapter Field Notes</h2>
+                <span class="card-sub">Biology Reference</span>
+              </div>
+              <div class="notes-body">
+                <p><strong>1. Common-Currency Valuation (Deaner, Khera &amp; Platt, 2005):</strong> Male rhesus macaques willingly sacrificed fluid ("cherry juice") to view <em>both</em> fertile female cues and <strong>high-status male faces</strong>, while demanding extra juice to view subordinates.</p>
+                <p><strong>2. Anisogamy &amp; Bateman's Principle:</strong> Asymmetric reproductive investment creates winner-take-most variance in males, driving risk-taking, costly displays (Zahavi handicap), and dominance monitoring.</p>
+                <p><strong>3. Evolutionary Mismatch (Supernormal Stimuli):</strong> When an artificial proxy emits a stronger cue than reality with zero reproductive payoff, high-drive/low-discernment males bleed metabolic currency until selection shifts the population toward discernment or lower impulsivity.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

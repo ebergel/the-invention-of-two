@@ -742,23 +742,23 @@ function mountTebLadder(el) {
       id: 'sex',
       num: 'TEB 1',
       name: 'Asexual → Sexual Reproduction',
-      status: 'Hard-coded switch today (target: emergent)',
+      status: '✓ EMERGENT & VERIFIED on Main (Genesis Lab + Negative Control 1)',
       advantage: 'Recombining DNA across lineages outruns fast-evolving parasites and combines good mutations faster than solo clonal branching.',
       jump: 'Unlocks genetic diversity, two-parent recombination, and eventually specialized sexes & mate competition.',
-      needed: 'Add co-evolving pathogens (antigen/immunity bitstrings) OR deleterious mutation accumulation + an evolvable "recombine_prob" gene so sex must beat clones on the same map!',
-      falsify: 'If sexuals still go extinct when parasites are turned OFF, and invade ONLY when co-evolving parasites or mutation load are turned ON, emergence is genuine.',
-      page: 'big-mystery',
+      needed: 'LIVE IN GENESIS LAB (/): Co-evolving 8-bit lock-and-key parasites + evolvable recombine gene competing against asexual clones under true two-fold energy conservation.',
+      falsify: 'VERIFIED BY NEGATIVE CONTROL 1: With parasites OFF, clones crush sexuals (<15%). With parasites ON (Exp 1), sexual recombination surges to ~80%+ and Shannon immune diversity expands!',
+      page: 'genesis-lab',
     },
     {
       id: 'oogamy',
       num: 'TEB 2',
-      name: 'Isogamy → Anisogamy → Oogamy',
-      status: 'Anisogamy ratio is a slider today (target: emergent split)',
+      name: 'Isogamy → Anisogamy → Two Sexes',
+      status: '✓ EMERGENT & VERIFIED on Main (Zero Hard-Coded M/F + Negative Control 2)',
       advantage: 'Disruptive selection on gamete size vs. number: tiny mobile gametes maximize search encounters; huge nutrient-rich gametes maximize zygote survival.',
-      jump: 'Spontaneously invents two distinct biological sexes (egg-makers vs. sperm-makers) from one symmetric starting population.',
-      needed: 'Remove hard-coded M/F labels! Give every organism one evolvable "gamete_size" gene with a fixed energy budget (count = Budget / size) and zygote survival = f(size_1 + size_2).',
-      falsify: 'Watch a unimodal middle-size population spontaneously bifurcate into two extreme peaks (tiny + huge) ONLY when zygote survival strongly favors large total mass.',
-      page: 'teb-concealed-ovulation',
+      jump: 'Spontaneously invents two distinct biological sexes (egg-makers vs. sperm-makers) from one symmetric 0.50 starting population.',
+      needed: 'LIVE IN GENESIS LAB (/): Zero M/F labels; continuous gameteSize gene starting at 0.50, fixed budget count(s), superlinear yolk survival S(Y), and segregating gamete-size inheritance.',
+      falsify: 'VERIFIED BY NEGATIVE CONTROL 2: At K=0.49 (Exp 2), 0.50 isogamy Y-forks into ~45% Micro + ~45% Macro (bifurcation > 0.60). At K=0.015 (Exp 4), ocean stays ~97% small isogamy — zero split!',
+      page: 'genesis-lab',
     },
     {
       id: 'provisioning',
@@ -1303,6 +1303,8 @@ function mountTebAtlas(el) {
         ? '#fbbf24'
         : isUp
         ? '#38bdf8'
+        : n.playable && n.simTier === 'emergent'
+        ? '#22d3ee'
         : n.playable
         ? '#e879f9'
         : ep.color;
@@ -1313,11 +1315,14 @@ function mountTebAtlas(el) {
       const boxW = 104;
       const boxH = 44;
 
-      // Tiny corner tag for 1x singular vs Nx convergent vs Lab
+      // Tiny corner tag for Emergent vs Take-01 Archive vs 1x singular vs Nx convergent
       let badgeText = '';
       let badgeColor = '#94a3b8';
-      if (n.playable) {
-        badgeText = 'LAB';
+      if (n.playable && n.simTier === 'emergent') {
+        badgeText = 'LIVE';
+        badgeColor = '#22d3ee';
+      } else if (n.playable) {
+        badgeText = 'T01';
         badgeColor = '#e879f9';
       } else if (n.originType === 'singular') {
         badgeText = '1×';
@@ -1409,7 +1414,8 @@ function mountTebAtlas(el) {
           <span><i class="al-box dashed"></i>Side Branch</span>
           <span><strong style="color:#38bdf8">1×</strong> Singular Bottleneck</span>
           <span><strong style="color:#34d399">N×</strong> Convergent</span>
-          <span><strong style="color:#e879f9">LAB</strong> Playable Now</span>
+          <span><strong style="color:#22d3ee">LIVE</strong> Emergent (Genesis Main)</span>
+          <span><strong style="color:#e879f9">T01</strong> Take-01 Archive</span>
         </div>
 
         <div class="atlas-inspector">
@@ -1419,6 +1425,7 @@ function mountTebAtlas(el) {
               <h3>${sel.short}</h3>
             </div>
             <div class="ai-badges">
+              ${sel.simTier === 'emergent' ? '<span class="ai-badge cyan">⚡ EMERGENT · ZERO HARD-CODING</span>' : sel.simTier === 'archive' ? '<span class="ai-badge slate">📦 TAKE-01 ARCHIVE</span>' : ''}
               <span class="ai-badge ${sel.originType === 'singular' ? 'cyan' : 'emerald'}">Origins: ${sel.origins}</span>
               <span class="ai-badge ${sel.epistemic === 'debated' ? 'amber' : 'slate'}">${sel.epistemic === 'debated' ? '🔍 Order / Cause Debated' : '✓ Well-Anchored'}</span>
             </div>
@@ -1440,7 +1447,7 @@ function mountTebAtlas(el) {
             sel.wikiPage || sel.labExp
               ? `<div class="ai-actions">
                   ${sel.wikiPage ? `<button class="wbtn" data-atlas-wiki="${sel.wikiPage}">📖 Read Full Wiki Article →</button>` : ''}
-                  ${sel.labExp ? `<a class="wbtn wbtn-primary" href="./index.html?exp=${sel.labExp}">🧪 Launch Live Lab Experiment →</a>` : ''}
+                  ${sel.labExp ? `<a class="wbtn wbtn-primary" href="${sel.labTarget || './take01.html'}?exp=${sel.labExp}">${sel.simTier === 'emergent' ? '⚡ Launch Genesis Observatory →' : '📦 Launch Take-01 Archive →'}</a>` : ''}
                 </div>`
               : ''
           }

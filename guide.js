@@ -40,7 +40,7 @@ const glossaryList = document.getElementById('glossary-list');
 const allPageIds = Object.keys(WIKI_PAGES);
 const visitedPages = new Set();
 const historyStack = [];
-let currentPageId = 'big-mystery';
+let currentPageId = 'charter';
 
 /** Convert [[key|Display Text]] syntax into clickable, hoverable wiki links */
 function renderWikiMarkup(rawHtml) {
@@ -96,7 +96,7 @@ function buildSidebar() {
 }
 
 function navigateTo(pageId, pushHistory = true) {
-  if (!WIKI_PAGES[pageId]) pageId = 'big-mystery';
+  if (!WIKI_PAGES[pageId]) pageId = 'charter';
   if (pushHistory && currentPageId && currentPageId !== pageId) {
     historyStack.push(currentPageId);
   }
@@ -143,14 +143,16 @@ function navigateTo(pageId, pushHistory = true) {
   // Mount interactive Canvas/DOM widgets & quizzes for this page
   mountWidgets(artBody);
 
-  // Lab CTA Banner
+  // Lab CTA Banner (routes Genesis pages to ./index.html, Take-01 pages to ./take01.html)
   if (page.labLink) {
+    const targetUrl = page.labLink.target || './take01.html';
+    const isGenesis = targetUrl === './index.html';
     artLabCta.innerHTML = `
       <div>
-        <strong>Ready to see this happen for real?</strong>
-        <span>Jump straight into the live interactive ecosystem and test it yourself!</span>
+        <strong>${isGenesis ? 'Test this in the Primary Genesis Observatory (Zero Hard-Coded Sexes)' : 'Explore this in the Take-01 Archive Lab (Pre-Labeled Mating Systems)'}</strong>
+        <span>${isGenesis ? 'Run the live emergence & negative-control experiments directly in the ocean observatory.' : 'Preserved Take-01 simulator for Bateman’s Principle, Platt valuation, and decoy traps.'}</span>
       </div>
-      <a class="wbtn wbtn-primary" href="./index.html?exp=${page.labLink.exp}">${page.labLink.label}</a>
+      <a class="wbtn wbtn-primary" href="${targetUrl}?exp=${page.labLink.exp}">${page.labLink.label}</a>
     `;
   }
 
@@ -187,7 +189,7 @@ function navigateTo(pageId, pushHistory = true) {
       b.addEventListener('click', () => navigateTo(b.dataset.jump))
     );
   } else {
-    railTerms.innerHTML = `<p style="font-size:12px;color:#94a3b8">Open the A–Z Glossary anytime to browse all 23 lab concepts.</p>`;
+    railTerms.innerHTML = `<p style="font-size:12px;color:#94a3b8">Open the A–Z Glossary anytime to browse all ${Object.keys(GLOSSARY).length} lab concepts.</p>`;
   }
 
   // Right Rail: Related Articles
@@ -344,7 +346,7 @@ btnBack.addEventListener('click', () => {
 
 document.getElementById('brand-home').addEventListener('click', (e) => {
   e.preventDefault();
-  navigateTo('big-mystery');
+  navigateTo('charter');
 });
 
 document.getElementById('btn-menu').addEventListener('click', () => {
@@ -362,7 +364,7 @@ window.addEventListener('keydown', (e) => {
   }
 });
 
-// Boot from URL hash if present (e.g. #page=gini-bateman)
+// Boot from URL hash if present (e.g. #page=genesis-lab)
 const hashMatch = window.location.hash.match(/page=([a-z0-9_-]+)/i);
-const startPage = hashMatch && WIKI_PAGES[hashMatch[1]] ? hashMatch[1] : 'big-mystery';
+const startPage = hashMatch && WIKI_PAGES[hashMatch[1]] ? hashMatch[1] : 'charter';
 navigateTo(startPage, false);
